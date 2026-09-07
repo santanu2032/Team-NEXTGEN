@@ -6,6 +6,7 @@ import org.junit.runner.RunWith
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
@@ -43,6 +45,7 @@ import androidx.compose.ui.zIndex
 import com.Presentation.CommonUI.Event.EventStatus
 import com.Presentation.CommonUI.Event.Event_II.Event_2
 import com.Presentation.CommonUI.Event.Event_II.TextField_event_2
+import com.Presentation.CommonUI.mainScreenUI.localManager
 import com.Presentation.CommonUI.values.CustomColorKT
 import com.Presentation.CommonUI.values.SantanuCC
 import org.junit.Rule
@@ -163,7 +166,7 @@ fun Output() {
         )
     }
 }
-@Preview
+
 @Composable
 fun Network_UI(){
 Box(modifier = Modifier
@@ -195,4 +198,79 @@ Box(modifier = Modifier
     }
 
 }
+}
+
+//@Preview
+@Composable
+fun PrototypeBox_III(){
+    var isClicked by remember { mutableStateOf(false) }
+    val boxColor = if (isClicked) Color.Gray else Color.White
+    Box(modifier = Modifier.fillMaxSize()) {
+
+        Box(modifier = Modifier
+
+            .fillMaxWidth(0.4f)
+            .fillMaxHeight(0.2f)
+            .background(color = boxColor, shape = RoundedCornerShape(16.dp))
+            .align(BiasAlignment(horizontalBias = -0.8f, verticalBias = 0.35f))
+            .clickable {
+                isClicked = !isClicked
+                try {
+
+                }
+                catch (e: Exception) {
+                    System.err.println(e)
+                    e.printStackTrace()
+                }
+            }, contentAlignment = Alignment.Center
+        ) {
+            Text("Instruments")
+
+        }
+    }
+}
+@Preview
+@Composable
+fun New_Register_UI(){
+    val usernameState = rememberTextFieldState()
+    val userpassword = rememberTextFieldState()
+    Box(modifier = Modifier
+
+        .fillMaxSize()
+        .background(color = Color.Black)
+    ){
+        Box(modifier = Modifier
+            .fillMaxHeight(0.08f)
+            .fillMaxWidth(0.73f)
+            .background(Color.White)
+            .align(BiasAlignment(horizontalBias = 0f, verticalBias = -0.5f))
+        ) {
+            TextField(
+                state = usernameState,
+                lineLimits = TextFieldLineLimits.SingleLine,
+                placeholder = { Text("Enter Username") }
+            )
+        }
+        Box(modifier = Modifier
+            .fillMaxHeight(0.08f)
+            .fillMaxWidth(0.73f)
+            .background(Color.White)
+            .align(BiasAlignment(horizontalBias = 0f, verticalBias = -0.2f))
+        ) {
+            TextField(
+                state = userpassword,
+                lineLimits = TextFieldLineLimits.SingleLine,
+                placeholder = { Text("Enter Password") }
+            )
+        }
+        Box(modifier = Modifier
+            .fillMaxHeight(0.06f)
+            .fillMaxWidth(0.2f)
+            .background(Color.White)
+            .align(BiasAlignment(horizontalBias = 0f, verticalBias = 0f)), contentAlignment = Alignment.Center
+        ){
+            Text("Upload")
+        }
+    }
+
 }

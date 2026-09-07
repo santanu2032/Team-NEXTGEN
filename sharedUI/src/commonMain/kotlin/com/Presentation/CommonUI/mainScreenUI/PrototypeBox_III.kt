@@ -7,21 +7,23 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 import androidx.compose.ui.unit.dp
-
+import com.Presentation.CommonUI.mainScreenUI.LocalDomain.LocalManager
 
 
 @Composable
-fun PrototypeBox_III(eventLink: localManager){
+fun PrototypeBox_III(eventLink: localManager,manager: LocalManager){
     var isClicked by remember { mutableStateOf(false) }
     val boxColor = if (isClicked) Color.Gray else Color.White
     Box(modifier = Modifier.fillMaxSize()) {
@@ -35,15 +37,16 @@ fun PrototypeBox_III(eventLink: localManager){
             .clickable {
                 isClicked = !isClicked
                 try {
-                    eventLink.onBoxIIIClicked(isClicked)
+                    manager.Clicked_3()
                 }
                 catch (e: Exception) {
                     System.err.println(e)
                     e.printStackTrace()
                 }
-            }
+            }, contentAlignment = Alignment.Center
         ) {
 
+            Text("Instruments")
         }
     }
 }

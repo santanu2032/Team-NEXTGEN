@@ -28,7 +28,7 @@ fun DrawMainScreenBackground(eventLink: localManager, manager: LocalManager) {
         StatusBar()
         PrototypeBox_I(manager)
         PrototypeBox_II(manager)
-        PrototypeBox_III(eventLink)
+        PrototypeBox_III(eventLink,manager)
         PrototypeBox_IV(eventLink)
         NavigationBar()
 

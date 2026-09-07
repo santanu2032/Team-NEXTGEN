@@ -10,6 +10,7 @@ import com.Presentation.CommonUI.Event.Event_I.Event_1
 import com.Presentation.CommonUI.Event.Event_I.network_module_UI.NetworkManager
 import com.domain.NetworkUILinkRepository
 import com.Presentation.CommonUI.Event.Event_II.Event_2
+import com.Presentation.CommonUI.Event.Event_III.Event_3
 import com.Presentation.CommonUI.mainScreenUI.DrawMainScreenBackground
 import com.Presentation.CommonUI.mainScreenUI.localManager
 import com.Presentation.CommonUI.mainScreenUI.LocalDomain.LocalManager
@@ -20,6 +21,7 @@ fun MainScreen(eventLink: localManager, localManager: LocalManager,networkEvent:
 
     val currentState_prototypeBox_II by localManager.uiState_2.collectAsState()
     val currentState_prototypeBox_I by localManager.uiState_1.collectAsState()
+    val currentState_prototyeBox_III by localManager.uiState_3.collectAsState()
 
     Box(modifier = Modifier.fillMaxSize()){
 
@@ -31,6 +33,10 @@ fun MainScreen(eventLink: localManager, localManager: LocalManager,networkEvent:
         }
         else if(currentState_prototypeBox_I.isClicked_1){
             Event_1(networkEvent,networkManager)
+        }
+        else if(currentState_prototyeBox_III.isClicked_3){
+            Event_3()
+
         }
         else{
             DrawMainScreenBackground(eventLink,localManager)
