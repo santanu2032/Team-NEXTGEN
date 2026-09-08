@@ -23,6 +23,7 @@ import com.Presentation.CommonUI.mainScreenUI.LocalDomain.LocalManager
 import com.Presentation.CommonUI.mainScreenUI.LocalDomain.Worker
 import com.domain.RequestRepository
 import com.domain.RequestReprositoryRouter
+import com.localdatabase.getRoomDatabase
 
 
 fun main() = application {//composition root
@@ -47,13 +48,16 @@ fun main() = application {//composition root
             val network =remember { Local_Manager_NetworkUIRepository() }
             val request= remember { RequestRepository() }
             val networkManager=remember { NetworkManager(request) }
+            val dao = remember {
+                getRoomDatabase().traderDao()
+            }
             LaunchedEffect(Unit) {
                 delay(5000)
                 showMainScreen = true
             }
 
             if (showMainScreen) {
-                MainScreen(link, localManager,network,networkManager)
+                MainScreen(link, localManager,network,networkManager,dao)
             } else {
                 StartScreen()
             }

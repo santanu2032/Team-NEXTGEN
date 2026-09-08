@@ -50,12 +50,16 @@ compose.desktop {
     }
 }
 dependencies {
+    implementation(project(":LocalDatabase"))
+    implementation("androidx.room:room-runtime:2.7.0-alpha11")
+    implementation("androidx.sqlite:sqlite-bundled:2.5.0-alpha11")
     implementation(libs.androidx.lifecycle.viewmodel.desktop)
     implementation(kotlin("stdlib"))
     implementation(project(":sensoryUnit"))
     implementation(compose.desktop.currentOs)
     implementation(project(":shared"))
     implementation(project(":sharedUI"))
+
     implementation(project(":Domain"))
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.swing)

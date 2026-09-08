@@ -20,6 +20,7 @@ import com.Presentation.CommonUI.MainScreen
 import com.Presentation.CommonUI.mainScreenUI.LocalDomain.LocalManager
 import com.Presentation.CommonUI.mainScreenUI.LocalDomain.Worker
 import com.domain.RequestRepository
+import com.localdatabase.getRoomDatabase
 import kotlinx.coroutines.delay
 
 
@@ -39,6 +40,9 @@ class MainActivity : ComponentActivity() {
                 val network =remember { Local_Manager_NetworkUIRepository() }
                 val request= remember { RequestRepository() }
                 val networkManager=remember { NetworkManager(request) }
+                val dao = remember {
+                    getRoomDatabase().traderDao()
+                }
 
                 LaunchedEffect(Unit) {
                     delay(5000)
@@ -46,7 +50,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 if (showMainScreen) {
-                    MainScreen(Link,manager,network,networkManager)
+                    MainScreen(Link,manager,network,networkManager,dao)
                 } else {
                     StartScreen()
                 }

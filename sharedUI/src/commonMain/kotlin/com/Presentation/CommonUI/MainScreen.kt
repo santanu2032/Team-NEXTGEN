@@ -14,10 +14,11 @@ import com.Presentation.CommonUI.Event.Event_III.Event_3
 import com.Presentation.CommonUI.mainScreenUI.DrawMainScreenBackground
 import com.Presentation.CommonUI.mainScreenUI.localManager
 import com.Presentation.CommonUI.mainScreenUI.LocalDomain.LocalManager
+import com.localdatabase.TraderDao
 
 
 @Composable
-fun MainScreen(eventLink: localManager, localManager: LocalManager,networkEvent: NetworkUILinkRepository,networkManager: NetworkManager){
+fun MainScreen(eventLink: localManager, localManager: LocalManager,networkEvent: NetworkUILinkRepository,networkManager: NetworkManager,traderDao: TraderDao){
 
     val currentState_prototypeBox_II by localManager.uiState_2.collectAsState()
     val currentState_prototypeBox_I by localManager.uiState_1.collectAsState()
@@ -35,7 +36,7 @@ fun MainScreen(eventLink: localManager, localManager: LocalManager,networkEvent:
             Event_1(networkEvent,networkManager)
         }
         else if(currentState_prototyeBox_III.isClicked_3){
-            Event_3()
+            Event_3(traderDao)
 
         }
         else{

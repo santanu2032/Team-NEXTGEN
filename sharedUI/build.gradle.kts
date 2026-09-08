@@ -30,6 +30,7 @@ kotlin {
 
             implementation(project(":shared"))
             implementation(project(":Domain"))
+            implementation(project(":LocalDatabase"))
         }
 
         androidMain.dependencies {

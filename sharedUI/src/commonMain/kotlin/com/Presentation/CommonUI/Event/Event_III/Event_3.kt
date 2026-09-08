@@ -17,12 +17,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-
+import com.localdatabase.TraderDao
 
 
 @Composable
-fun Event_3() {
-    var showRegisterUI by remember { mutableStateOf(false) }
+fun Event_3(traderDao_: TraderDao) {
+    var showNewRegisterUI by remember { mutableStateOf(false) }
+    var showRegisterUI: Boolean by remember{mutableStateOf(false)}
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -35,7 +36,7 @@ fun Event_3() {
             .background(color = Color.White)
             .align(BiasAlignment(horizontalBias = 0f, verticalBias = 0f))
             .clickable{
-                showRegisterUI=true
+                showNewRegisterUI=true
 
             }, contentAlignment = Alignment.Center
         ){
@@ -45,12 +46,25 @@ fun Event_3() {
             .fillMaxHeight(0.2f)
             .fillMaxWidth(0.4f)
             .background(color = Color.White)
-            .align(BiasAlignment(horizontalBias = 0f, verticalBias = -0.8f)), contentAlignment = Alignment.Center
+            .align(BiasAlignment(horizontalBias = 0f, verticalBias = -0.8f))
+            .clickable{
+                println("Register Account clicked")
+                showRegisterUI=true
+            }
+            , contentAlignment = Alignment.Center
         ){
             Text("Register Account")
         }
-        if (showRegisterUI){
+        if(showRegisterUI){
+            RegisteredUsersScreen(traderDao_)
+        }
+        else{}
+        Text("DEBUG showRegisterUI = $showRegisterUI", color = Color.Red)
+        if (showNewRegisterUI){
             New_Register_UI()
         }
+        else{}
+
+
     }
 }

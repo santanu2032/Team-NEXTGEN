@@ -28,7 +28,7 @@ navigationFragmentKtx = "2.9.8"
 navigationUiKtx = "2.9.8"
 firebaseCommonKtx = "22.2.0"
 kotlinxCoroutines = "1.9.0"
-
+ksp = "2.2.10-2.0.2"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 firebase-common = { module = "dev.gitlive:firebase-common", version.ref = "firebaseCommon" }
@@ -76,4 +76,5 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 android-lint = { id = "com.android.lint", version.ref = "agp" }
 android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 android-built-in1-kotlin = { id = "com.android.built-in-kotlin", version.ref = "androidBuiltInKotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
